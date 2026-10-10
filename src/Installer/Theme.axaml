@@ -1,0 +1,359 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- palette, accent picked from the mod icon sky -->
+    <Color x:Key="BgColor">#14171C</Color>
+    <Color x:Key="PanelColor">#1C2027</Color>
+    <Color x:Key="HoverColor">#252A33</Color>
+    <Color x:Key="BorderColor">#2C323C</Color>
+    <Color x:Key="TextColor">#E9ECF2</Color>
+    <Color x:Key="TextDimColor">#939CAB</Color>
+    <!-- text and glyphs sitting on a light semantic fill -->
+    <Color x:Key="TextOnFillColor">#0E1216</Color>
+    <Color x:Key="AccentColor">#4FA3E3</Color>
+    <Color x:Key="AccentHoverColor">#66B4EE</Color>
+    <Color x:Key="GreenColor">#5FC98B</Color>
+    <!-- amber marks updates and unstable builds -->
+    <Color x:Key="AmberColor">#E9A94A</Color>
+    <Color x:Key="AmberHoverColor">#F4BA63</Color>
+    <Color x:Key="RedColor">#E06C75</Color>
+    <Color x:Key="RedHoverColor">#E9838B</Color>
+    <Color x:Key="SupportColor">#FF5E5B</Color>
+    <Color x:Key="SupportHoverColor">#FF7774</Color>
+
+    <SolidColorBrush x:Key="Bg" Color="{StaticResource BgColor}" />
+    <SolidColorBrush x:Key="Panel" Color="{StaticResource PanelColor}" />
+    <SolidColorBrush x:Key="Hover" Color="{StaticResource HoverColor}" />
+    <SolidColorBrush x:Key="Stroke" Color="{StaticResource BorderColor}" />
+    <SolidColorBrush x:Key="Text" Color="{StaticResource TextColor}" />
+    <SolidColorBrush x:Key="TextDim" Color="{StaticResource TextDimColor}" />
+    <SolidColorBrush x:Key="TextOnFill" Color="{StaticResource TextOnFillColor}" />
+    <SolidColorBrush x:Key="Scrim" Color="{StaticResource BgColor}" Opacity="0.85" />
+    <SolidColorBrush x:Key="Transparent" Color="#00000000" />
+
+    <!-- every semantic color comes as solid, hover, 12% fill, 30% fill border -->
+    <SolidColorBrush x:Key="Accent" Color="{StaticResource AccentColor}" />
+    <SolidColorBrush x:Key="AccentHover" Color="{StaticResource AccentHoverColor}" />
+    <SolidColorBrush x:Key="AccentFill" Color="{StaticResource AccentColor}" Opacity="0.12" />
+    <SolidColorBrush x:Key="AccentFillBorder" Color="{StaticResource AccentColor}" Opacity="0.3" />
+    <SolidColorBrush x:Key="Green" Color="{StaticResource GreenColor}" />
+    <SolidColorBrush x:Key="GreenFill" Color="{StaticResource GreenColor}" Opacity="0.12" />
+    <SolidColorBrush x:Key="GreenFillBorder" Color="{StaticResource GreenColor}" Opacity="0.3" />
+    <SolidColorBrush x:Key="Amber" Color="{StaticResource AmberColor}" />
+    <SolidColorBrush x:Key="AmberHover" Color="{StaticResource AmberHoverColor}" />
+    <SolidColorBrush x:Key="AmberFill" Color="{StaticResource AmberColor}" Opacity="0.12" />
+    <SolidColorBrush x:Key="AmberFillBorder" Color="{StaticResource AmberColor}" Opacity="0.3" />
+    <SolidColorBrush x:Key="Red" Color="{StaticResource RedColor}" />
+    <SolidColorBrush x:Key="RedHover" Color="{StaticResource RedHoverColor}" />
+    <SolidColorBrush x:Key="SplitDivider" Color="{StaticResource TextOnFillColor}" Opacity="0.25" />
+    <SolidColorBrush x:Key="Support" Color="{StaticResource SupportColor}" />
+    <SolidColorBrush x:Key="SupportHover" Color="{StaticResource SupportHoverColor}" />
+    <SolidColorBrush x:Key="SupportFill" Color="{StaticResource SupportColor}" Opacity="0.12" />
+    <SolidColorBrush x:Key="SupportFillHover" Color="{StaticResource SupportColor}" Opacity="0.2" />
+    <SolidColorBrush x:Key="SupportFillBorder" Color="{StaticResource SupportColor}" Opacity="0.45" />
+
+    <!-- Segoe MDL2 does not exist on Linux, so every glyph is drawn instead -->
+    <StreamGeometry x:Key="CheckGlyph">M2,7.5 L6,11.5 L13,3</StreamGeometry>
+    <StreamGeometry x:Key="UpdateGlyph">M7.5,2 L7.5,11 M3.5,7.5 L7.5,11.5 L11.5,7.5</StreamGeometry>
+    <StreamGeometry x:Key="ChevronGlyph">M1,1 L5,5 L9,1</StreamGeometry>
+
+    <!-- solid accent button -->
+    <ControlTheme x:Key="Primary" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Accent}" />
+        <Setter Property="Foreground" Value="{StaticResource TextOnFill}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Padding" Value="14,6" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="bd" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}"
+                        Padding="{TemplateBinding Padding}">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#bd">
+            <Setter Property="Background" Value="{StaticResource AccentHover}" />
+        </Style>
+        <Style Selector="^:disabled /template/ Border#bd">
+            <Setter Property="Opacity" Value="0.4" />
+        </Style>
+        <!-- left half of a split action, the channel chevron sits on the right -->
+        <Style Selector="^.joined">
+            <Setter Property="CornerRadius" Value="6,0,0,6" />
+        </Style>
+    </ControlTheme>
+
+    <!-- neutral solid, an action of the same weight as Primary but not the one we push -->
+    <ControlTheme x:Key="Secondary" TargetType="Button" BasedOn="{StaticResource Primary}">
+        <Setter Property="Background" Value="{StaticResource Hover}" />
+        <Setter Property="Foreground" Value="{StaticResource Text}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="bd" Background="{TemplateBinding Background}" BorderBrush="{StaticResource Stroke}"
+                        BorderThickness="1" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#bd">
+            <Setter Property="Background" Value="{StaticResource Stroke}" />
+        </Style>
+        <Style Selector="^:disabled /template/ Border#bd">
+            <Setter Property="Opacity" Value="0.4" />
+        </Style>
+    </ControlTheme>
+
+    <!-- solid amber button, the pending update action -->
+    <ControlTheme x:Key="Update" TargetType="Button" BasedOn="{StaticResource Primary}">
+        <Setter Property="Background" Value="{StaticResource Amber}" />
+        <Style Selector="^:pointerover /template/ Border#bd">
+            <Setter Property="Background" Value="{StaticResource AmberHover}" />
+        </Style>
+    </ControlTheme>
+
+    <!-- solid red button -->
+    <ControlTheme x:Key="Danger" TargetType="Button" BasedOn="{StaticResource Primary}">
+        <Setter Property="Background" Value="{StaticResource Red}" />
+        <Style Selector="^:pointerover /template/ Border#bd">
+            <Setter Property="Background" Value="{StaticResource RedHover}" />
+        </Style>
+    </ControlTheme>
+
+    <!-- outlined subtle button -->
+    <ControlTheme x:Key="Ghost" TargetType="Button" BasedOn="{StaticResource Primary}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource Text}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="bd" Background="{TemplateBinding Background}" BorderBrush="{StaticResource Stroke}"
+                        BorderThickness="1" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#bd">
+            <Setter Property="Background" Value="{StaticResource Hover}" />
+        </Style>
+        <Style Selector="^:disabled /template/ Border#bd">
+            <Setter Property="Opacity" Value="0.4" />
+        </Style>
+    </ControlTheme>
+
+    <!-- text-only button, for low weight links -->
+    <ControlTheme x:Key="Quiet" TargetType="Button" BasedOn="{StaticResource Primary}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource TextDim}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="bd" Background="Transparent" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="Foreground" Value="{StaticResource Text}" />
+        </Style>
+        <Style Selector="^:disabled /template/ Border#bd">
+            <Setter Property="Opacity" Value="0.4" />
+        </Style>
+    </ControlTheme>
+
+    <!-- same but hovers red, for destructive actions like Uninstall -->
+    <ControlTheme x:Key="QuietDanger" TargetType="Button" BasedOn="{StaticResource Quiet}">
+        <Style Selector="^:pointerover">
+            <Setter Property="Foreground" Value="{StaticResource Red}" />
+        </Style>
+    </ControlTheme>
+
+    <!-- nav pill toggle -->
+    <ControlTheme x:Key="NavPill" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="{StaticResource TextDim}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="bd" Background="Transparent" CornerRadius="7" Padding="16,6">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:checked /template/ Border#bd">
+            <Setter Property="Background" Value="{StaticResource Hover}" />
+        </Style>
+        <Style Selector="^:checked">
+            <Setter Property="Foreground" Value="{StaticResource Text}" />
+        </Style>
+        <Style Selector="^:pointerover">
+            <Setter Property="Foreground" Value="{StaticResource Text}" />
+        </Style>
+    </ControlTheme>
+
+    <!-- panel card, no hover -->
+    <ControlTheme x:Key="CardStatic" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource Panel}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Stroke}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="14,10" />
+        <Setter Property="Margin" Value="0,0,0,8" />
+    </ControlTheme>
+
+    <!-- mod row card -->
+    <ControlTheme x:Key="Card" TargetType="Border" BasedOn="{StaticResource CardStatic}">
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{StaticResource Hover}" />
+        </Style>
+    </ControlTheme>
+
+    <!-- small tag, corner radius matches buttons -->
+    <ControlTheme x:Key="Tag" TargetType="Border">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{StaticResource Stroke}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Padding" Value="9,2" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </ControlTheme>
+
+    <!-- green state chip, sized to match the Primary button box -->
+    <ControlTheme x:Key="StatusChip" TargetType="Border" BasedOn="{StaticResource Tag}">
+        <Setter Property="Background" Value="{StaticResource GreenFill}" />
+        <Setter Property="BorderBrush" Value="{StaticResource GreenFillBorder}" />
+        <Setter Property="Padding" Value="13,6" />
+        <Style Selector="^.joined">
+            <Setter Property="CornerRadius" Value="6,0,0,6" />
+        </Style>
+    </ControlTheme>
+
+    <!-- right segment of a split install action, opens the release channel choice, colors follow the action -->
+    <ControlTheme x:Key="ChannelsButton" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Accent}" />
+        <Setter Property="Foreground" Value="{StaticResource TextOnFill}" />
+        <Setter Property="BorderBrush" Value="{StaticResource SplitDivider}" />
+        <Setter Property="BorderThickness" Value="1,0,0,0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="ToolTip.Tip" Value="Choose a release channel" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0,6,6,0">
+                    <Panel>
+                        <Border Name="hover" Background="White" Opacity="0" CornerRadius="0,6,6,0" />
+                        <Path Data="{StaticResource ChevronGlyph}" Stroke="{TemplateBinding Foreground}"
+                              StrokeThickness="1.6" StrokeLineCap="Round" StrokeJoin="Round"
+                              Width="10" Height="6" Stretch="None" Margin="9,0" VerticalAlignment="Center" />
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#hover">
+            <Setter Property="Opacity" Value="0.12" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.4" />
+        </Style>
+        <Style Selector="^.update">
+            <Setter Property="Background" Value="{StaticResource Amber}" />
+        </Style>
+        <!-- joins the green Installed chip, whose right border is the divider -->
+        <Style Selector="^.installed">
+            <Setter Property="Background" Value="{StaticResource GreenFill}" />
+            <Setter Property="Foreground" Value="{StaticResource Green}" />
+            <Setter Property="BorderBrush" Value="{StaticResource GreenFillBorder}" />
+            <Setter Property="BorderThickness" Value="0,1,1,1" />
+        </Style>
+    </ControlTheme>
+
+    <!-- ko-fi pill, lifts and glows on hover -->
+    <ControlTheme x:Key="SupportButton" TargetType="Button" BasedOn="{StaticResource Primary}">
+        <Setter Property="Background" Value="{StaticResource SupportFill}" />
+        <Setter Property="Foreground" Value="{StaticResource Support}" />
+        <Setter Property="Padding" Value="16,7" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="bd" Background="{TemplateBinding Background}" BorderBrush="{StaticResource SupportFillBorder}"
+                        BorderThickness="1" CornerRadius="16" Padding="{TemplateBinding Padding}">
+                    <Border.Transitions>
+                        <Transitions>
+                            <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.16" />
+                            <BoxShadowsTransition Property="BoxShadow" Duration="0:0:0.16" />
+                        </Transitions>
+                    </Border.Transitions>
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="Foreground" Value="{StaticResource SupportHover}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#bd">
+            <Setter Property="Background" Value="{StaticResource SupportFillHover}" />
+            <Setter Property="BorderBrush" Value="{StaticResource Support}" />
+            <Setter Property="RenderTransform" Value="translateY(-1px)" />
+            <Setter Property="BoxShadow" Value="0 0 12 0 #59FF5E5B" />
+        </Style>
+    </ControlTheme>
+
+    <!-- tinted info panel, the semantic color comes from the call site -->
+    <ControlTheme x:Key="InfoPanel" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource AccentFill}" />
+        <Setter Property="BorderBrush" Value="{StaticResource AccentFillBorder}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="8" />
+    </ControlTheme>
+
+    <!-- step number badge -->
+    <ControlTheme x:Key="StepBadge" TargetType="Border">
+        <Setter Property="Width" Value="24" />
+        <Setter Property="Height" Value="24" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Background" Value="{StaticResource Hover}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Stroke}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,0,13,0" />
+    </ControlTheme>
+
+    <!-- thin download progress bar -->
+    <ControlTheme x:Key="Progress" TargetType="ProgressBar">
+        <Setter Property="Height" Value="4" />
+        <Setter Property="MinHeight" Value="4" />
+        <Setter Property="Maximum" Value="1" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="Foreground" Value="{StaticResource Accent}" />
+        <Setter Property="Background" Value="{StaticResource Hover}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}" CornerRadius="2" ClipToBounds="True">
+                    <Border Name="PART_Indicator" Background="{TemplateBinding Foreground}"
+                            CornerRadius="2" HorizontalAlignment="Left" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

@@ -1,0 +1,72 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="BigWalkVRInstaller.SupportFooter">
+    <UserControl.Styles>
+        <!-- heart wobbles and the button hops once on enter, on top of the theme's 1px lift -->
+        <Style Selector="Button#SupportButton:pointerover">
+            <Style.Animations>
+                <Animation Duration="0:0:0.45" Easing="SineEaseOut">
+                    <KeyFrame Cue="0%"><Setter Property="TranslateTransform.Y" Value="0" /></KeyFrame>
+                    <KeyFrame Cue="35%"><Setter Property="TranslateTransform.Y" Value="-3" /></KeyFrame>
+                    <KeyFrame Cue="60%"><Setter Property="TranslateTransform.Y" Value="1" /></KeyFrame>
+                    <KeyFrame Cue="100%"><Setter Property="TranslateTransform.Y" Value="0" /></KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="Button#SupportButton:pointerover TextBlock#Heart">
+            <Style.Animations>
+                <Animation Duration="0:0:0.6" Easing="SineEaseOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RotateTransform.Angle" Value="0" />
+                        <Setter Property="ScaleTransform.ScaleX" Value="1" />
+                        <Setter Property="ScaleTransform.ScaleY" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="20%">
+                        <Setter Property="RotateTransform.Angle" Value="-18" />
+                        <Setter Property="ScaleTransform.ScaleX" Value="1.15" />
+                        <Setter Property="ScaleTransform.ScaleY" Value="1.15" />
+                    </KeyFrame>
+                    <KeyFrame Cue="45%">
+                        <Setter Property="RotateTransform.Angle" Value="14" />
+                        <Setter Property="ScaleTransform.ScaleX" Value="1.1" />
+                        <Setter Property="ScaleTransform.ScaleY" Value="1.1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="70%">
+                        <Setter Property="RotateTransform.Angle" Value="-7" />
+                        <Setter Property="ScaleTransform.ScaleX" Value="1" />
+                        <Setter Property="ScaleTransform.ScaleY" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RotateTransform.Angle" Value="0" />
+                        <Setter Property="ScaleTransform.ScaleX" Value="1" />
+                        <Setter Property="ScaleTransform.ScaleY" Value="1" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </UserControl.Styles>
+
+    <StackPanel HorizontalAlignment="Center">
+        <TextBlock Text="Made for the love of VR by CircuitLord" FontSize="11.5" FontStyle="Italic"
+                   Foreground="{StaticResource TextDim}" HorizontalAlignment="Center" />
+        <Panel HorizontalAlignment="Center" Margin="0,10,0,0">
+            <Button Name="SupportButton" Theme="{StaticResource SupportButton}" Click="Support_Click">
+                <Button.RenderTransform>
+                    <TranslateTransform />
+                </Button.RenderTransform>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Name="Heart" Text="&#x2665;" Margin="0,0,7,0" RenderTransformOrigin="50%,50%">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform />
+                                <RotateTransform />
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock Text="Support my work" />
+                </StackPanel>
+            </Button>
+            <Canvas Name="Confetti" IsHitTestVisible="False" />
+        </Panel>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Big Walk VR Installer
+GenericName=Mod Installer
+Comment=Install and update the Big Walk VR mod under Proton
+# Adjust Exec and Icon to wherever you put the binary, then copy this file to
+# ~/.local/share/applications/ and run: update-desktop-database ~/.local/share/applications
+Exec=/opt/bigwalkvr/BigWalkVRInstaller
+Icon=/opt/bigwalkvr/bigwalkvr_icon.png
+Terminal=false
+Categories=Game;Utility;
+Keywords=vr;steamvr;proton;bepinex;mod;bigwalk;
+StartupWMClass=BigWalkVRInstaller
